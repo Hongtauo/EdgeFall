@@ -2,6 +2,10 @@
 
 Web App 在浏览器中显示视频、人物轨迹、跌倒分数和报警事件。前端使用 Vue，后端使用 FastAPI，通过 MJPEG 传输画面、WebSocket 更新分数与运行状态。
 
+![向后跌倒片段的运行界面](assets/demo-fall-alert.png)
+
+*截图中的视频来自 CAUCAFall，画面叠加了人物框、跌倒分数和报警状态。[来源与署名](third_party.md#演示截图)。*
+
 ## 启动
 
 先按[部署说明](deployment.md)安装依赖并准备模型、演示视频和回放结果。在仓库根目录的 PowerShell 中运行：

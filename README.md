@@ -90,9 +90,9 @@ Web App 使用 Vue 和 FastAPI，显示视频、人物框、分数曲线、报�
 `live` 模式执行模型推理，`replay` 模式读取保存的逐帧结果。
 默认播放列表包含 18 段视频，需另外准备对应素材，见[演示说明](docs/showcase.md)。
 
-![EdgeFall Web App 实际界面](docs/assets/demo-dashboard.png)
+![EdgeFall 检测到向后跌倒时的界面](docs/assets/demo-fall-alert.png)
 
-*Web App 待启动界面，图中尚无预测结果。*
+*CAUCAFall 向后跌倒片段的运行截图。视频来源与署名见[素材说明](docs/third_party.md#演示截图)。*
 
 ```bash
 cd Application/frontend

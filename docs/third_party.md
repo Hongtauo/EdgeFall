@@ -15,6 +15,14 @@ UR Fall 官方联系方式见原页。公开使用视频时需确认原始条款
 
 本项目的数据划分是本实验协议，不代表各数据集作者发布的唯一标准排行榜协议。尤其是 FVD 的本地划分与其他论文的划分可能不同，跨论文数字不能直接比较。
 
+## 演示截图
+
+首页和演示说明中的 `docs/assets/demo-fall-alert.png` 为 EdgeFall Web App 的运行截图。
+其中的视频画面来自 [CAUCAFall v4](https://data.mendeley.com/datasets/7w7fccy7ky/4)，
+作者为 Jose Camilo Eraso、Elena Muñoz、Mariela Muñoz 和 Jesus Pinto，
+原数据按 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 发布。
+截图在原始画面上叠加了人物框、分数和报警信息，并包含 EdgeFall 的界面。
+
 ## 检测器与依赖
 
 共享视觉前端依赖 [Ultralytics](https://github.com/ultralytics/ultralytics) 与其 YOLO26 权重生态。许可应参照 [Ultralytics 官方许可说明](https://www.ultralytics.com/license) 和实际使用版本的 LICENSE。源码开源策略、商业部署和权重再分发应分别核对；本页不把本项目代码的许可扩展到第三方权重。

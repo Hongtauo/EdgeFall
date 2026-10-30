@@ -14,6 +14,10 @@ Three-domain cached-feature tests report macro AP **0.9226** and macro Mean-P **
 An independent online UR Fall protocol detects **30/30 falls**, with **19/40 ADL false positives**; mean algorithm latency is **44.34 ms** on an RTX 4070 Ti SUPER, excluding decoding, with one scored person.
 The default runtime supports two scored people. These latency protocols are distinct.
 
+![EdgeFall Web App on a backward-fall clip](docs/assets/demo-fall-alert.png)
+
+*Web App screenshot using a CAUCAFall clip. [Source attribution](docs/third_party.md#演示截图).*
+
 ```bash
 conda create -n EdgeFall-ST python=3.11 -y
 conda activate EdgeFall-ST
