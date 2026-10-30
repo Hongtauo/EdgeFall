@@ -1,0 +1,73 @@
+{
+  "dataset": "UR Fall Detection Dataset cam0 RGB",
+  "checkpoint": "artifacts\\checkpoints\\20260801_195609_932737\\epoch_008.pt",
+  "weights": "yolo26s.pt",
+  "sequences": 70,
+  "fall_sequences": 30,
+  "adl_sequences": 40,
+  "source_frames": 11936,
+  "sampled_frames": 4004,
+  "source_fps": 30.0,
+  "effective_fps": 10.0,
+  "alarm_threshold": 0.709393084049225,
+  "threshold_source": "three-domain validation pooled F1; unified manifest selection; test and UR excluded",
+  "ranking": {
+    "average_precision": 0.8660084476490746,
+    "p90": 0.7894736842105263,
+    "p95": 0.7894736842105263,
+    "mean_precision": 0.7894736842105263
+  },
+  "fixed_threshold": {
+    "tp": 30,
+    "fp": 19,
+    "tn": 21,
+    "fn": 0,
+    "precision": 0.6122448979591837,
+    "recall": 1.0,
+    "f1": 0.759493670886076,
+    "accuracy": 0.7285714285714285
+  },
+  "latency": {
+    "timed_frames": 3994,
+    "detector_ms": {
+      "mean": 16.75750665851898,
+      "p50": 16.17180008906871,
+      "p95": 21.548600087407976
+    },
+    "tracking_ms": {
+      "mean": 0.5209166752468304,
+      "p50": 0.5248499801382422,
+      "p95": 0.7940950687043368
+    },
+    "feature_pool_ms": {
+      "mean": 2.2145872289742985,
+      "p50": 2.0482500549405813,
+      "p95": 3.2769848825410004
+    },
+    "confirmer_ms": {
+      "mean": 24.84363998825306,
+      "p50": 24.16124998126179,
+      "p95": 31.87056010356173
+    },
+    "algorithm_ms": {
+      "mean": 44.33665055099317,
+      "p50": 43.44219993799925,
+      "p95": 54.526679939590394
+    },
+    "algorithm_fps": 22.554703333980182,
+    "decode_ms_total": 20418.870301451534,
+    "wall_s_total": 201.85967799974605,
+    "peak_cuda_memory_mb": 89.69921875
+  },
+  "parameters": {
+    "detector": 10009784,
+    "detector_runtime_fused": 9496140,
+    "confirmer_including_frozen_geometry": 2202930,
+    "total": 12212714,
+    "total_runtime_fused": 11699070
+  },
+  "max_people": 1,
+  "causal_tracking": true,
+  "disk_feature_cache": false,
+  "video_score": "maximum causal sampled-frame fall score"
+}

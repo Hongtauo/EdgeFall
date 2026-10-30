@@ -1,0 +1,17 @@
+path,decision,target_track_ids,reason
+fallen/fallen_te_130,use,13,reviewer_identified_target_track
+fall/fall_mi_138,use,1,reviewer_identified_target_track
+fallen/fallen_mi_036,use,2,reviewer_identified_target_track
+fall/fall_te_062,use,3,reviewer_identified_target_track
+fallen/fallen_te_136,use,12,reviewer_identified_target_track
+fall/fall_mi_097,exclude,,bbox_drift_and_identity_switch
+fall/fall_te_077,exclude,,multiple_fallers_then_target_tracks_disappear
+fallen/fallen_el_150,exclude,,unresolved_target_track
+fallen/fallen_mi_112,exclude,,unresolved_target_track
+fallen/fallen_te_010,exclude,,unresolved_target_track
+fallen/fallen_te_028,exclude,,unresolved_target_track
+fallen/fallen_te_080,exclude,,unresolved_target_track
+fallen/fallen_yo_081,exclude,,unresolved_target_track
+fallen/fallen_yo_153,exclude,,unresolved_target_track
+fall/fall_te_158,exclude,,unresolved_target_track
+fall/fall_to_155,exclude,,unresolved_target_track

@@ -1,0 +1,44 @@
+{
+  "model": "EdgeFall-ST HN3-B-R Seed-1 epoch 8",
+  "input": "demo/source",
+  "output_dir": "demo/inference",
+  "videos": 18,
+  "positive_predictions": 8,
+  "alarm_threshold": 0.7094,
+  "device": "cuda",
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 4070 Ti SUPER",
+    "compute_capability": [
+      8,
+      9
+    ],
+    "total_memory_gb": 15.99169921875,
+    "torch_cuda_runtime": "13.0",
+    "torch_cuda_arch_list": [
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "bf16_supported": true,
+    "amp_dtype": "bfloat16"
+  },
+  "checkpoint": "models/hn3br_epoch008_inference.pt",
+  "checkpoint_sha256": "85558b2384e4f363953188f560a2f6838b5b2b5243541e0043dae0f07ffce54e",
+  "yolo_weights": "models/yolo26s.pt",
+  "yolo_sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b",
+  "parameters": {
+    "detector": 10009784,
+    "confirmer_including_frozen_geometry": 2202930,
+    "total": 12212714
+  },
+  "latency": {
+    "timed_samples": 964,
+    "algorithm_mean_ms": 55.32925653634148,
+    "algorithm_p95_ms": 67.28250998421568,
+    "algorithm_fps": 18.073620767761046,
+    "peak_cuda_memory_mb": 89.69921875
+  }
+}

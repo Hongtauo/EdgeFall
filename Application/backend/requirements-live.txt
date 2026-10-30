@@ -1,0 +1,6 @@
+-r requirements.txt
+typing-extensions==4.15.0
+PyYAML==6.0.3
+ultralytics==8.4.98
+ultralytics-thop==2.0.20
+lap==0.5.13

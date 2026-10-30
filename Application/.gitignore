@@ -1,0 +1,6 @@
+.venv/
+.venv-live/
+.runtime/
+frontend/node_modules/
+backend/**/__pycache__/
+*.pyc

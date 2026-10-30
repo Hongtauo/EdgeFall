@@ -1,0 +1,251 @@
+run_id: '20260801_195609_932737'
+created_at: '2026-08-01T19:56:09.951871+08:00'
+# Executable/module paths normalized from the archived run for publication.
+command:
+- python
+- -m
+- edgefall_st.training.train_fygr
+- --train-cache
+- artifacts\frozen_features\yolo26s\train
+- --train-candidates
+- artifacts\manual_actor_overrides\omnifall_train_v2\base_cache_selection.jsonl
+- --val-cache
+- artifacts\frozen_features\yolo26s\val
+- --extra-train-cache
+- artifacts\frozen_features\v35_md_yolo26s\fall_video_dataset\train
+- --extra-train-cache
+- artifacts\frozen_features\cauca60_yolo26s\caucafall\train
+- --train-overlay-cache
+- artifacts\frozen_features\yolo26s_manual_primary_v2\train
+- --extra-val-cache
+- artifacts\frozen_features\v35_md_yolo26s\fall_video_dataset\val
+- --extra-val-cache
+- artifacts\frozen_features\v35_md_yolo26s\caucafall\val
+- --split-manifest
+- artifacts\multidomain_cauca60\split_manifest.csv
+- --hard-negative-manifest
+- artifacts\hard_negatives\v36_hn3b_yolo26s\train.jsonl
+- --hard-positive-manifest
+- artifacts\hard_positives\v36_hn3a_yolo26s\train.jsonl
+- --geometry-checkpoint
+- artifacts\checkpoints\20260725_220646_947213\best.pt
+- --fusion-mode
+- cross-attention-summary
+- --attention-heads
+- '4'
+- --attention-ffn-dim
+- '256'
+- --epochs
+- '15'
+- --batch-size
+- '144'
+- --windows-per-video
+- '12'
+- --positive-videos-per-batch
+- '4'
+- --hard-positive-videos-per-batch
+- '2'
+- --semantic-hard-videos-per-batch
+- '2'
+- --score-hard-videos-per-batch
+- '1'
+- --learning-rate
+- '0.0006'
+- --workers
+- '4'
+- --device
+- cuda
+- --log-interval
+- '25'
+arguments:
+  train_cache: artifacts\frozen_features\yolo26s\train
+  val_cache: artifacts\frozen_features\yolo26s\val
+  shard_cache_size: 2
+  train_candidates: artifacts\manual_actor_overrides\omnifall_train_v2\base_cache_selection.jsonl
+  hard_negative_manifest: artifacts\hard_negatives\v36_hn3b_yolo26s\train.jsonl
+  hard_positive_manifest: artifacts\hard_positives\v36_hn3a_yolo26s\train.jsonl
+  split_manifest: artifacts\multidomain_cauca60\split_manifest.csv
+  extra_train_cache:
+  - artifacts\frozen_features\v35_md_yolo26s\fall_video_dataset\train
+  - artifacts\frozen_features\cauca60_yolo26s\caucafall\train
+  extra_val_cache:
+  - artifacts\frozen_features\v35_md_yolo26s\fall_video_dataset\val
+  - artifacts\frozen_features\v35_md_yolo26s\caucafall\val
+  train_overlay_cache:
+  - artifacts\frozen_features\yolo26s_manual_primary_v2\train
+  workers: 4
+  prefetch_factor: 2
+  geometry_checkpoint: artifacts\checkpoints\20260725_220646_947213\best.pt
+  temporal_dim: 128
+  dropout: 0.1
+  fusion_mode: cross-attention-summary
+  attention_heads: 4
+  attention_ffn_dim: 256
+  person_mil_temperature: 0.0
+  use_global: true
+  use_roi: true
+  train_geometry: false
+  epochs: 15
+  batch_size: 144
+  windows_per_video: 12
+  positive_videos_per_batch: 4
+  hard_positive_videos_per_batch: 2
+  semantic_hard_videos_per_batch: 2
+  score_hard_videos_per_batch: 1
+  learning_rate: 0.0006
+  geometry_lr_factor: 0.1
+  weight_decay: 0.0001
+  warmup_epochs: 2
+  minimum_lr_ratio: 0.05
+  gradient_clip: 10.0
+  history_truncation_prob: 0.2
+  seed: 20260726
+  device: cuda
+  amp: true
+  amp_dtype: bfloat16
+  resume: null
+  max_train_batches: 0
+  max_val_batches: 0
+  log_interval: 25
+  stage_loss_weight: 1.0
+  fall_loss_weight: 2.0
+  event_state_loss_weight: 0.5
+  onset_loss_weight: 0.5
+  action_loss_weight: 0.05
+  control_loss_weight: 0.25
+  consistency_loss_weight: 0.25
+  video_mil_loss_weight: 0.5
+  video_ranking_loss_weight: 0.25
+  hard_video_ranking_loss_weight: 0.0
+  hard_video_ranking_margin: 0.2
+  global_aux_weight: 0.5
+  roi_aux_weight: 0.5
+  weak_video_aux_weight: 0.5
+  fall_alpha: 0.75
+  fall_gamma: 2.0
+  log_root: log
+  checkpoint_root: artifacts\checkpoints
+resolved:
+  device: cuda
+  torch_version: 2.13.0+cu130
+  log_dir: log\20260801_195609_932737
+  checkpoint_dir: artifacts\checkpoints\20260801_195609_932737
+  feature_contract:
+    format: edgefall-frozen-features-v2
+    complete: true
+    sample_count: 136238
+    video_count: 8400
+    geometry_frame_count: 429146
+    visual_frame_count: 345279
+    arrays:
+      global_features:
+      - 768
+      roi_features:
+      - 384
+      - 3
+      - 3
+      actor_boxes:
+      - 4
+      actor_valid_mask: []
+      visual_actor_boxes:
+      - 4
+    split: train
+    history_offsets:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 12
+    - 16
+    - 20
+    - 24
+    - 28
+    - 32
+    visual_offsets:
+    - 0
+    - 2
+    - 4
+    - 7
+    - 8
+    - 16
+    - 24
+    - 32
+    visual_input_size:
+    - 544
+    - 960
+    geometry_input_size:
+    - 288
+    - 512
+    effective_fps: 10.0
+    weights_sha256: 646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b
+    windows_sha256: c2817729d22344f3f9914ce62700814ee85718d7570d0eb4536d6bceeab07ab7
+    data_sources:
+      dataset_root: Dataset\omnifall\of-syn
+      windows: artifacts\omnifall_v2\windows_train.jsonl
+      tracks_root: artifacts\pseudo_labels\train_yolo26s_nms\tracks
+      actor_targets_root: artifacts\actor_targets_yolo26s\train\targets
+    feature_adapter:
+      adapter: UltralyticsYOLOFeatureAdapter
+      levels:
+      - p3
+      - p4
+      - p5
+      channels:
+        p3: 128
+        p4: 256
+        p5: 512
+      global_levels:
+      - p4
+      - p5
+      roi_levels:
+      - p3
+      - p4
+      roi_output_size: 3
+      roi_context_scale: 1.25
+      coordinate_system: letterboxed_normalized_xyxy
+      source_layer_indices:
+      - 16
+      - 19
+      - 22
+  total_parameters: 2202930
+  trainable_parameters: 1678107
+  geometry_frozen: true
+  geometry_trainable_parameters: 0
+  amp_enabled: true
+  amp_dtype: torch.bfloat16
+  parameter_scope: frozen V3.3-G plus trainable confirmer; YOLO feature extractor
+    excluded
+  hard_negative_summary:
+    manifest: artifacts\hard_negatives\v36_hn3b_yolo26s\train.jsonl
+    candidate_count: 4459
+    semantic_candidate_count: 2644
+    score_candidate_count: 1815
+    semantic_video_count: 2625
+    score_video_count: 1676
+    hard_window_count: 53388
+    category_counts:
+      bend_pick: 12
+      kneel_squat: 92
+      lie_down: 1238
+      score_mined_unknown: 1815
+      sit: 1302
+    domain_counts:
+      caucafall: 39
+      fall_video_dataset: 661
+      omnifall: 3759
+  hard_positive_summary:
+    manifest: artifacts\hard_positives\v36_hn3a_yolo26s\train.jsonl
+    candidate_count: 327
+    video_count: 327
+    domain_counts:
+      caucafall: 6
+      fall_video_dataset: 105
+      omnifall: 216
+    video_score_minimum: 0.27609217166900635
+    video_score_mean: 0.6361880817362292
+    video_score_maximum: 0.8789315819740295

@@ -1,0 +1,45 @@
+{
+  "model_name": "EdgeFall-ST HN3-B-R Seed-1 Epoch 8",
+  "model_version": "v3.6-md-gcva-hn3br-final",
+  "created_at": "2026-08-25T00:00:00+08:00",
+  "selection": {
+    "run_id": "20260801_195609_932737",
+    "epoch": 8,
+    "source": "three-domain validation split only",
+    "metric": "macro_end_to_end_video_mean_precision",
+    "alarm_threshold": 0.7094,
+    "threshold_source": "three-domain pooled validation F1"
+  },
+  "parameters": {
+    "detector": 10009784,
+    "confirmer_including_frozen_geometry": 2202930,
+    "total": 12212714
+  },
+  "files": {
+    "models/yolo26s.pt": {
+      "size_bytes": 20422725,
+      "sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b"
+    },
+    "models/geometry_v33g_inference.pt": {
+      "size_bytes": 2127083,
+      "sha256": "cfe72559c61b5808fbc0e6634b35e4ff9ee34deec8f6ddcf590dfbf84e8a6242"
+    },
+    "models/hn3br_epoch008_inference.pt": {
+      "size_bytes": 8898520,
+      "sha256": "85558b2384e4f363953188f560a2f6838b5b2b5243541e0043dae0f07ffce54e"
+    }
+  },
+  "public_test_macro": {
+    "average_precision": 0.9226,
+    "p90": 0.8617,
+    "p95": 0.7907,
+    "mean_precision": 0.8262
+  },
+  "deployment_boundary": {
+    "pytorch_cuda_validated": true,
+    "v100_code_compatibility_audited": true,
+    "v100_hardware_validated": false,
+    "target_npu_validated": false,
+    "int8_validated": false
+  }
+}

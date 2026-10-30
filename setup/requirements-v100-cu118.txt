@@ -1,0 +1,12 @@
+--index-url https://download.pytorch.org/whl/cu118
+--extra-index-url https://pypi.org/simple
+
+# CUDA 11.8 wheels retain Volta (sm_70) support and work with older cloud drivers.
+torch==2.6.0
+torchvision==0.21.0
+numpy==2.4.6
+opencv-python==5.0.0.93
+PyYAML==6.0.3
+ultralytics==8.4.98
+ultralytics-thop==2.0.20
+lap==0.5.13

@@ -1,0 +1,20 @@
+{
+  "01_omnifall_fall.mp4": "fall",
+  "04_omnifall_sit_down_adl.mp4": "adl",
+  "05_fvd_fall.mp4": "fall",
+  "06_fvd_no_fall.mp4": "adl",
+  "10_fvd_bed_activity.mp4": "adl",
+  "11_fvd_gym_fall.mp4": "fall",
+  "12_caucafall_forward.avi": "fall",
+  "13_caucafall_hop.avi": "adl",
+  "14_caucafall_pickup.avi": "adl",
+  "15_urfd_side_fall.mp4": "fall",
+  "16_urfd_chair_fall.mp4": "fall",
+  "17_urfd_bending_walk.mp4": "adl",
+  "18_urfd_tie_shoe.mp4": "adl",
+  "19_fvd_no_fall_2.mp4": "adl",
+  "20_fvd_gym_fall_2.mp4": "fall",
+  "21_caucafall_backward.avi": "fall",
+  "22_caucafall_sit_down.avi": "adl",
+  "23_urfd_daily_walk.mp4": "adl"
+}

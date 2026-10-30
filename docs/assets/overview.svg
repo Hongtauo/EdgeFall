@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="940" viewBox="0 0 1600 940" role="img" aria-labelledby="title desc">
+  <title id="title">EdgeFall: causal video fall detection from shared spatial features to events</title>
+  <desc id="desc">Original architecture illustration. Monocular video enters one YOLO26s pass, which supplies geometry, global and person ROI features. A causal 3.2-second history and geometry-conditioned visual attention produce person-level scores and an event demonstration. Metric cards distinguish cached-feature evaluation and online latency.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07182f"/><stop offset="1" stop-color="#11304d"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#50dfbf"/><stop offset="1" stop-color="#70cfff"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffffff" stroke-opacity=".04"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#75dccb"/></marker>
+    <style>text{font-family:Arial,Helvetica,sans-serif} .white{fill:#f4f8fc}.muted{fill:#b0c6d8}.small{font-size:19px}.body{font-size:23px}.label{font-size:22px;font-weight:700}.line{stroke:#75dccb;stroke-width:3;fill:none;marker-end:url(#arrow)}.card{fill:#102e48;stroke:#33526b;stroke-width:1.5}</style>
+  </defs>
+  <rect width="1600" height="940" rx="30" fill="url(#bg)"/>
+  <rect width="1600" height="940" rx="30" fill="url(#grid)"/>
+  <rect x="62" y="57" width="10" height="106" rx="5" fill="url(#accent)"/>
+  <text x="100" y="108" font-size="57" font-weight="700" class="white">EdgeFall</text>
+  <text x="102" y="151" font-size="25" class="muted">Shared spatial features. Causal temporal reasoning. Visible event output.</text>
+  <rect x="1230" y="71" width="305" height="52" rx="26" fill="#164c50" stroke="#57d9bf"/>
+  <text x="1382" y="104" text-anchor="middle" font-size="20" font-weight="700" fill="#9af0d9">HN3-B-R · Seed 1 · Epoch 8</text>
+
+  <rect x="60" y="204" width="1480" height="448" rx="23" fill="#0b2239" stroke="#29475e"/>
+  <text x="90" y="247" class="small muted">MODEL DESIGN</text>
+
+  <g transform="translate(93 291)">
+    <rect x="18" y="0" width="166" height="113" rx="10" fill="#23465d" stroke="#66849b"/>
+    <rect x="9" y="12" width="166" height="113" rx="10" fill="#1d3d54" stroke="#7a98ad"/>
+    <rect x="0" y="24" width="166" height="113" rx="10" fill="#17344d" stroke="#90b0c5"/>
+    <path d="M9 122L45 91L76 105L110 73L157 112" stroke="#395f76" stroke-width="3" fill="none"/>
+    <rect x="67" y="46" width="43" height="77" rx="6" fill="none" stroke="#63e0be" stroke-width="3"/>
+    <circle cx="88" cy="64" r="7" fill="#a0c5d5"/>
+    <path d="M80 76Q88 71 96 76L101 96L96 99L93 87V115H86V97H84V115H77V86L74 99L69 96L75 79Z" fill="#a0c5d5"/>
+    <text x="82" y="176" text-anchor="middle" class="label white">Monocular video</text>
+    <text x="82" y="207" text-anchor="middle" class="small muted">10 sampled frames / s</text>
+  </g>
+  <path d="M287 361H332" class="line"/>
+  <rect x="341" y="302" width="229" height="128" rx="17" fill="#164b51" stroke="#68ddc3" stroke-width="2"/>
+  <text x="455" y="347" text-anchor="middle" font-size="28" font-weight="700" class="white">YOLO26s</text>
+  <text x="455" y="380" text-anchor="middle" class="small" fill="#b7f0de">One shared forward pass</text>
+  <text x="455" y="408" text-anchor="middle" class="small" fill="#b7f0de">Detection + spatial features</text>
+
+  <path d="M570 366H608V288H640" class="line"/>
+  <path d="M570 366H640" class="line"/>
+  <path d="M570 366H608V450H640" class="line"/>
+  <rect x="649" y="263" width="255" height="62" rx="12" class="card"/>
+  <text x="668" y="289" class="label white">Geometry</text><text x="668" y="313" font-size="17" class="muted">Tracked person boxes → motion</text>
+  <rect x="649" y="341" width="255" height="62" rx="12" class="card"/>
+  <text x="668" y="367" class="label white">Global visual context</text><text x="668" y="391" font-size="17" class="muted">P4 / P5 pooled scene features</text>
+  <rect x="649" y="419" width="255" height="62" rx="12" class="card"/>
+  <text x="668" y="445" class="label white">Person ROI details</text><text x="668" y="469" font-size="17" class="muted">P3 / P4 aligned person features</text>
+
+  <path d="M909 294H946V337H972" class="line"/>
+  <path d="M909 372H972" class="line"/>
+  <path d="M909 450H946V405H972" class="line"/>
+  <rect x="981" y="303" width="240" height="133" rx="17" fill="#153b51" stroke="#7cc8e7" stroke-width="2"/>
+  <text x="1101" y="339" text-anchor="middle" class="label white">Causal encoders</text>
+  <text x="1101" y="373" text-anchor="middle" class="small muted">Short + long time scales</text>
+  <text x="1101" y="405" text-anchor="middle" class="small" fill="#9ddccf">Geometry query → visual K/V</text>
+  <path d="M1221 368H1264" class="line"/>
+  <rect x="1273" y="303" width="220" height="133" rx="17" fill="#164b51" stroke="#68ddc3" stroke-width="2"/>
+  <text x="1383" y="340" text-anchor="middle" class="label white">Person-level risk</text>
+  <text x="1383" y="375" text-anchor="middle" class="small" fill="#b7f0de">Falling + fallen states</text>
+  <text x="1383" y="408" text-anchor="middle" class="small" fill="#b7f0de">Scores → event display</text>
+
+  <path d="M351 562H1195" stroke="#365971" stroke-width="3"/>
+  <g fill="#4e7a91"><circle cx="357" cy="562" r="7"/><circle cx="570" cy="562" r="7"/><circle cx="785" cy="562" r="7"/><circle cx="1000" cy="562" r="7"/></g>
+  <circle cx="1195" cy="562" r="9" fill="#5fe1bd"/>
+  <text x="355" y="599" text-anchor="middle" class="small muted">t − 3.2 s</text><text x="785" y="599" text-anchor="middle" class="small muted">Current + historical observations</text><text x="1195" y="599" text-anchor="middle" class="small" fill="#80ebca">t · now</text>
+  <text x="94" y="567" class="label white">History</text>
+  <text x="1280" y="559" font-size="18" class="muted">No future frames</text>
+  <text x="1280" y="586" font-size="18" class="muted">Up to 3.2 s lookback</text>
+
+  <rect x="60" y="680" width="350" height="170" rx="20" class="card"/>
+  <text x="87" y="721" class="small muted">MODEL FOOTPRINT</text><text x="87" y="780" font-size="44" font-weight="700" class="white">12.21M</text><text x="87" y="821" class="small muted">Detector + temporal confirmer</text>
+  <rect x="432" y="680" width="350" height="170" rx="20" class="card"/>
+  <text x="459" y="721" class="small muted">THREE-DOMAIN TEST</text><text x="459" y="780" font-size="44" font-weight="700" fill="#75e6c7">AP 0.9226</text><text x="459" y="821" class="small muted">Macro AP · cached-feature protocol</text>
+  <rect x="804" y="680" width="350" height="170" rx="20" class="card"/>
+  <text x="831" y="721" class="small muted">HISTORICAL ONLINE MEASUREMENT</text><text x="831" y="780" font-size="44" font-weight="700" fill="#91d5f4">44.34 ms</text><text x="831" y="817" font-size="17" class="muted">RTX 4070 Ti SUPER · 1 person</text><text x="831" y="840" font-size="17" class="muted">UR Fall · algorithm only, excludes decode</text>
+  <rect x="1176" y="680" width="364" height="170" rx="20" class="card"/>
+  <text x="1203" y="721" class="small muted">DEPLOYMENT DEMONSTRATION</text><text x="1203" y="775" font-size="32" font-weight="700" class="white">Live / Replay</text><text x="1203" y="817" class="small muted">Vue + FastAPI · explicit engine mode</text>
+  <text x="62" y="901" font-size="18" class="muted">Original architecture illustration · Research prototype · See benchmark protocols and deployment status in the repository</text>
+</svg>

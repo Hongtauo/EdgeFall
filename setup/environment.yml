@@ -1,0 +1,10 @@
+name: EdgeFall-ST
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -r setup/requirements.txt

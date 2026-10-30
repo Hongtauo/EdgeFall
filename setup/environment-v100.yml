@@ -1,0 +1,8 @@
+name: EdgeFall-ST
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -r setup/requirements-v100-cu118.txt

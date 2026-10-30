@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-30",
+  "scope": "local source-release preparation; no retraining or complete dataset reevaluation",
+  "python_tests": {"passed": 173, "duration_seconds": 10.28},
+  "frontend": {"npm_ci": "passed", "npm_run_build": "passed", "vite": "7.3.6"},
+  "backend": {"health_ok": true, "playlist_entries": 18, "screenshot": "docs/assets/demo-dashboard.png", "screenshot_state": "idle, without third-party footage or predictions"},
+  "model_loading": {"all_three_sha256": "passed", "parameter_count": 12212714, "device": "cuda"},
+  "video_smoke": {
+    "input": "demo/source/01_omnifall_fall.mp4",
+    "video_score": 0.940861701965332,
+    "alarm_threshold": 0.7094,
+    "is_fall": true,
+    "max_people": 2,
+    "timed_samples": 41,
+    "algorithm_mean_ms": 77.79335365886232,
+    "algorithm_p95_ms": 116.82610000207205,
+    "peak_cuda_allocated_mib": 89.69921875,
+    "note": "Short-video functional smoke; not a formal performance benchmark or an update to the archived URFD results."
+  },
+  "environment": {
+    "name": "EdgeFall-ST",
+    "gpu": "NVIDIA GeForce RTX 4070 Ti SUPER",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "opencv": "5.0.0",
+    "numpy": "2.4.6",
+    "ultralytics": "8.4.98",
+    "amp_dtype": "bfloat16"
+  },
+  "publication": {"license": "pending owner decision", "github_connector_initial_read": "404; repository existence or access unresolved", "pushed": false}
+}

@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edgefall-st"
+version = "0.2.0"
+description = "Causal geometry-guided visual fall detection with shared YOLO features"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=2.0,<3", "opencv-python>=4.10,<6", "PyYAML>=6.0,<7",
+  "torch>=2.6,<3", "torchvision>=0.21,<1",
+]
+
+[project.optional-dependencies]
+inference = ["ultralytics==8.4.98", "lap==0.5.13"]
+dev = ["pytest>=8,<10"]
+demo = ["fastapi==0.116.1", "uvicorn[standard]==0.35.0", "pydantic==2.11.7"]
+
+[project.urls]
+Repository = "https://github.com/Hongtauo/EdgeFall"
+Issues = "https://github.com/Hongtauo/EdgeFall/issues"
+
+[project.scripts]
+edgefall-prepare = "edgefall_st.data.prepare:main"
+edgefall-extract-fygr = "edgefall_st.features.extract:main"
+edgefall-train-fygr = "edgefall_st.training.train_fygr:main"
+edgefall-evaluate-fygr = "edgefall_st.evaluation.fygr:main"
+edgefall-calibrate-video-threshold = "edgefall_st.evaluation.video_threshold:main"
+
+[tool.setuptools.packages.find]
+include = ["edgefall_st*", "external_eval*"]
+exclude = ["tests*", "Application*", "docs*", "reports*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

@@ -1,0 +1,60 @@
+data:
+  dataset_root: Dataset/omnifall/of-syn
+  annotation_file: of-syn.csv
+  label_map_file: label2id.csv
+  output_dir: artifacts/omnifall_v1
+  effective_fps: 10.0
+  window_length: 32
+  window_stride: 4
+  boundary_fps: 30.0
+  video_frame_cache_size: 4
+  uint8_images: true
+  deduplicate_backbone_frames: true
+  split_seed: 20260717
+  split_ratios:
+    train: 0.7
+    val: 0.1
+    test: 0.2
+
+model:
+  input_height: 288
+  input_width: 512
+  backbone_channels: [16, 32, 64, 128, 192]
+  neck_channels: 96
+  embedding_dim: 8
+  num_stages: 3
+  num_actions: 16
+  history_offsets:
+    p3: [0, 1, 2, 4]
+    p4: [0, 1, 2, 4, 8, 16, 24, 31]
+    p5: [0, 1, 2, 4, 8, 16, 24, 31]
+
+training:
+  onset_duration_s: 0.5
+  amp_dtype: bfloat16
+  assigner:
+    strides: [8, 16, 32]
+    regression_ranges: [[0, 64], [64, 128], [128, .inf]]
+    center_sampling_radius: 1.5
+    min_box_confidence: 0.0
+  loss_weights:
+    box: 5.0
+    objectness: 1.0
+    stage: 2.0
+    onset: 1.0
+    action: 0.5
+    track: 0.1
+  stage_class_weights: [1.0, 2.0, 2.0]
+  objectness_focal:
+    alpha: 0.25
+    gamma: 2.0
+  onset_focal:
+    alpha: 0.75
+    gamma: 2.0
+  track_temperature: 0.1
+
+runtime:
+  effective_fps: 10.0
+  person_threshold: 0.25
+  nms_iou_threshold: 0.5
+  max_detections: 100

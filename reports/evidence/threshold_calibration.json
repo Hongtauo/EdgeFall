@@ -1,0 +1,163 @@
+{
+  "selection": {
+    "source": "validation_only",
+    "objective": "pooled_video_f1",
+    "tie_break": [
+      "recall",
+      "precision",
+      "threshold"
+    ],
+    "threshold": 0.7093930840492249
+  },
+  "validation": {
+    "pooled": {
+      "videos": 1919,
+      "positives": 592,
+      "negatives": 1327,
+      "tp": 537,
+      "fp": 54,
+      "tn": 1273,
+      "fn": 55,
+      "accuracy": 0.9431995831162063,
+      "precision": 0.9086294416243654,
+      "recall": 0.9070945945945946,
+      "specificity": 0.9593067068575735,
+      "balanced_accuracy": 0.933200650726084,
+      "f1": 0.9078613693998309
+    },
+    "domains": {
+      "caucafall": {
+        "videos": 20,
+        "positives": 10,
+        "negatives": 10,
+        "tp": 10,
+        "fp": 3,
+        "tn": 7,
+        "fn": 0,
+        "accuracy": 0.85,
+        "precision": 0.7692307692307693,
+        "recall": 1.0,
+        "specificity": 0.7,
+        "balanced_accuracy": 0.85,
+        "f1": 0.8695652173913044
+      },
+      "fall_video_dataset": {
+        "videos": 699,
+        "positives": 349,
+        "negatives": 350,
+        "tp": 343,
+        "fp": 8,
+        "tn": 342,
+        "fn": 6,
+        "accuracy": 0.9799713876967096,
+        "precision": 0.9772079772079773,
+        "recall": 0.9828080229226361,
+        "specificity": 0.9771428571428571,
+        "balanced_accuracy": 0.9799754400327466,
+        "f1": 0.9800000000000001
+      },
+      "omnifall": {
+        "videos": 1200,
+        "positives": 233,
+        "negatives": 967,
+        "tp": 184,
+        "fp": 43,
+        "tn": 924,
+        "fn": 49,
+        "accuracy": 0.9233333333333333,
+        "precision": 0.8105726872246696,
+        "recall": 0.7896995708154506,
+        "specificity": 0.9555325749741469,
+        "balanced_accuracy": 0.8726160728947987,
+        "f1": 0.7999999999999999
+      }
+    },
+    "missing_videos": {
+      "omnifall": 0,
+      "fall_video_dataset": 0,
+      "caucafall": 0
+    }
+  },
+  "test": {
+    "pooled": {
+      "videos": 7661,
+      "positives": 2738,
+      "negatives": 4923,
+      "tp": 2568,
+      "fp": 590,
+      "tn": 4333,
+      "fn": 170,
+      "accuracy": 0.9007962406996476,
+      "precision": 0.8131728942368588,
+      "recall": 0.9379108838568299,
+      "specificity": 0.8801543774121471,
+      "balanced_accuracy": 0.9090326306344885,
+      "f1": 0.8710990502035278
+    },
+    "domains": {
+      "caucafall": {
+        "videos": 20,
+        "positives": 10,
+        "negatives": 10,
+        "tp": 10,
+        "fp": 2,
+        "tn": 8,
+        "fn": 0,
+        "accuracy": 0.9,
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "specificity": 0.8,
+        "balanced_accuracy": 0.9,
+        "f1": 0.9090909090909091
+      },
+      "fall_video_dataset": {
+        "videos": 5241,
+        "positives": 2267,
+        "negatives": 2974,
+        "tp": 2201,
+        "fp": 515,
+        "tn": 2459,
+        "fn": 66,
+        "accuracy": 0.8891432932646441,
+        "precision": 0.8103829160530192,
+        "recall": 0.9708866343184825,
+        "specificity": 0.8268325487558843,
+        "balanced_accuracy": 0.8988595915371834,
+        "f1": 0.883403572145294
+      },
+      "omnifall": {
+        "videos": 2400,
+        "positives": 461,
+        "negatives": 1939,
+        "tp": 357,
+        "fp": 73,
+        "tn": 1866,
+        "fn": 104,
+        "accuracy": 0.92625,
+        "precision": 0.8302325581395349,
+        "recall": 0.7744034707158352,
+        "specificity": 0.962351727694688,
+        "balanced_accuracy": 0.8683775992052616,
+        "f1": 0.8013468013468014
+      }
+    },
+    "missing_videos": {
+      "omnifall": 0,
+      "fall_video_dataset": 8,
+      "caucafall": 0
+    }
+  },
+  "inputs": {
+    "manifest": "artifacts\\multidomain_cauca60\\split_manifest.csv",
+    "validation_predictions": {
+      "omnifall": "artifacts\\evaluations\\unified_reselected_20260801\\hn3br_seed1\\omnifall_val\\predictions.csv",
+      "fall_video_dataset": "artifacts\\evaluations\\unified_reselected_20260801\\hn3br_seed1\\fall_video_dataset_val\\predictions.csv",
+      "caucafall": "artifacts\\evaluations\\unified_reselected_20260801\\hn3br_seed1\\caucafall_val\\predictions.csv"
+    },
+    "test_predictions": {
+      "omnifall": "artifacts\\evaluations\\unified_reselected_20260801\\hn3br_seed1\\omnifall_test\\predictions.csv",
+      "fall_video_dataset": "artifacts\\evaluations\\unified_reselected_20260801\\hn3br_seed1\\fall_video_dataset_test\\predictions.csv",
+      "caucafall": "artifacts\\evaluations\\unified_reselected_20260801\\hn3br_seed1\\caucafall_test\\predictions.csv"
+    }
+  }
+}
