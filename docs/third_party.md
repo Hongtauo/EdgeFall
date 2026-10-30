@@ -11,7 +11,7 @@
 | CAUCAFall v4 | [Mendeley DOI 10.17632/7w7fccy7ky.4](https://data.mendeley.com/datasets/7w7fccy7ky/4) | 训练与跨主体测试 | 发布页注明 **CC BY 4.0**；使用时保留作者、数据集、版本和许可归属 |
 | UR Fall Detection Dataset | [University of Rzeszow 官方页](https://fenix.ur.edu.pl/~mkepski/ds/uf.html) | 锁定后的在线外部评测 | 发布页注明 **CC BY-NC-SA 4.0**、非商业学术用途；商业用途需联系原作者 |
 
-UR Fall 官方联系方式见原页。技术作品集公开展示的视频应采用自己拍摄并获得授权的内容，或确认数据集条款允许对应的展示形式；不能将可下载等同于无限制再分发。
+UR Fall 官方联系方式见原页。公开使用视频时需确认原始条款允许对应的用途，并保留必要的署名和许可声明。
 
 本项目的数据划分是本实验协议，不代表各数据集作者发布的唯一标准排行榜协议。尤其是 FVD 的本地划分与其他论文的划分可能不同，跨论文数字不能直接比较。
 

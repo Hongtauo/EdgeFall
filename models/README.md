@@ -1,7 +1,7 @@
 # 模型资产
 
-本地发布候选目录包含三个锁定权重；Git 默认不跟踪 `.pt` 文件。模型 Release 尚未发布，
-仓库不会在运行时静默下载未核实的权重。当前持有原提交包的开发者可本地恢复：
+模型使用以下三个权重，Git 默认不跟踪 `.pt` 文件。目前尚未发布模型下载。
+已有提交包时，可从本地目录导入：
 
 ```bash
 python scripts/import_assets.py --from-package /path/to/submission/final

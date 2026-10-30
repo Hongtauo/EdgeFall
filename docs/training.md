@@ -135,4 +135,5 @@ python -m edgefall_st.evaluation.fygr \
 
 `models/fygr.py`、`training/train_fygr.py`、`features/*` 和 `evaluation/fygr.py` 是最终训练主路径；`training/train.py` 和部分旧模型模块作为公共基础依赖保留。历史 concat、temporal-token、person-MIL 等模式保留了接口，它们不代表发布权重采用这些结构。V3.7—V3.11 的实验结果不并入最终模型指标。
 
-发布基线提供推理能力与可审计训练配方。完整数据训练、完整测试重跑、不同设备的速度与量化结果，应在用户自己的数据、环境和日志中重新验证。[数据指南](datasets.md)列出哪些产物仍需获取或生成。
+仓库包含推理代码和最终训练配置，原始数据、特征缓存与部分历史训练产物需另外准备。
+具体清单见[数据指南](datasets.md)。

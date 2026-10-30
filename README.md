@@ -2,11 +2,9 @@
 
 # EdgeFall
 
-**让普通摄像头理解跌倒发生的过程。**
+基于几何轨迹与共享视觉特征的视频跌倒检测
 
-面向边缘部署的因果视频跌倒检测研究与演示项目
-
-[English](README.en.md) · [方法设计](docs/method.md) · [训练复现](docs/training.md) · [测试结果](docs/benchmarks.md) · [部署演示](docs/deployment.md) · [项目展示](docs/showcase.md)
+[English](README.en.md) · [方法](docs/method.md) · [训练](docs/training.md) · [评测](docs/benchmarks.md) · [部署](docs/deployment.md) · [演示](docs/showcase.md)
 
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB)
 ![PyTorch](https://img.shields.io/badge/PyTorch-CUDA-EE4C2C)
@@ -17,37 +15,27 @@
 
 </div>
 
-EdgeFall 从人物的运动轨迹、身体附近的视觉细节和全局场景中共同寻找跌倒证据。
-它复用一次 YOLO26s 前向计算获得的空间特征，以轻量时序确认器识别跌倒转移与持续倒地，
-提供逐人物分数、报警时刻和可追溯结果。项目包含训练、评测、命令行推理与 Vue + FastAPI 演示。
+EdgeFall 使用单目视频中的人物框轨迹、人物局部特征和场景特征检测跌倒。
+YOLO26s 同时完成人体检测和视觉特征提取，时序确认器结合历史观测，
+输出逐人物跌倒分数和报警时刻。仓库包含数据处理、训练、评测、在线推理和 Web 演示代码。
 
-当前发布候选锁定 **HN3-B-R Seed-1 Epoch 8**。这份技术作品集将方法动机、训练流程、
-可追溯实验与在线系统放在同一个项目中，展示从建模到工程验证的完整过程。
+当前模型为 **HN3-B-R Seed-1 Epoch 8**，总参数量 12.21M，按 10 FPS 采样，最多使用 3.2 秒历史。
 
-## 为什么需要时间、几何和场景一起判断
+## 方法概述
 
-坐下、弯腰、躺到床上与跌倒可以具有相似的单帧外观。EdgeFall 用三个互补线索做确认：
+坐下、弯腰、躺到床上与跌倒可能具有相似的单帧外观。模型因此同时使用三类信息：
 
 - **运动几何**：人物框的位置、比例和变化，描述身体如何移动。
 - **人物 ROI**：复用 P3/P4 特征，观察人物与附近支撑物的关系。
 - **全局场景**：复用 P4/P5 特征，为床、椅子、地面等上下文提供视觉证据。
 
-几何状态作为 Query，从全局与 ROI 视觉状态中提取相关证据。短、长时间分支覆盖当前到
+几何状态作为 Query，对全局与 ROI 视觉状态做交叉注意力。短、长时间分支覆盖当前到
 3.2 秒历史，全过程只读取当前和过去。P3/P4/P5 是空间尺度；稀疏历史采样是时间尺度。
 模型不使用人体骨架、深度或音频。[结构、张量维度与采样说明 →](docs/method.md)
 
-## 这份项目体现的技术工作
+## 实验结果
 
-| 工作 | 具体实现 | 可检查的证据 |
-|---|---|---|
-| 轻量时空建模 | 共享空间特征、双时间尺度、几何条件注意力 | [核心模型](edgefall_st/models/fygr.py)、[几何编码器](edgefall_st/models/bbox_classifier.py) |
-| 数据与训练工程 | 人物跟踪、人工审核、冻结缓存、困难样本采样 | [训练指南](docs/training.md)、[审核标注](annotations/omnifall/)、[训练参数](reports/training_parameters.yaml) |
-| 严谨评测 | 完整验证域选模、验证阈值锁定、跨域和外部评测 | [原始结果](reports/evidence/)、[评测实现](edgefall_st/evaluation/) |
-| 在线系统 | 人物历史状态、逐帧输出、Vue/FastAPI、live/replay | [推理入口](infer.py)、[Web App](Application/)、[部署指南](docs/deployment.md) |
-
-## 已有实验结果
-
-| 证据 | 结果 | 测量范围 |
+| 项目 | 结果 | 测量范围 |
 |---|---:|---|
 | 总参数量 | **12,212,714** | YOLO26s + 含几何分支的确认器 |
 | 三域宏 AP | **0.9226** | 冻结特征缓存上的视频级测试 |
@@ -65,9 +53,10 @@ EdgeFall 从人物的运动轨迹、身体附近的视觉细节和全局场景�
 | CAUCAFall | 20 | 0.9909 | 1.0000 | 0.9091 | 0.9545 |
 | 宏平均 | — | **0.9226** | **0.8617** | **0.7907** | **0.8262** |
 
-这些是项目已有实验记录，尚无独立第三方复测。CAUCAFall 测试样本少，UR Fall 正常活动
-误报仍较多，不能把短片演示准确率视为产品精度。默认推理最多 2 人，历史 UR 时延是
-`max_people=1` 协议。完整定义、缺失窗口处理、阈值与原始 JSON 见[评测说明](docs/benchmarks.md)。
+三域结果使用缓存特征评测。UR Fall 单独运行完整在线链路，在 30 个跌倒视频中全部检出，
+40 个正常活动视频中有 19 个误报。CAUCAFall 测试集只有 20 段视频。
+默认推理最多处理 2 人，UR Fall 时延按 `max_people=1` 测量。
+指标定义、实验设置和原始记录见[评测说明](docs/benchmarks.md)。
 
 ## 快速运行
 
@@ -81,9 +70,8 @@ conda activate EdgeFall-ST
 python -m pip install -e ".[inference,demo,dev]"
 ```
 
-源码仓库与第三方视频、模型资产分开管理。本地整理目录已放入现有提交包的模型和演示素材，
-Git 默认忽略这些二进制文件。全新 clone 后需按[模型资产说明](models/README.md)恢复三个权重，
-自备视频即可推理；仓库尚未发布可下载的模型 Release。
+仓库不包含模型权重和数据集视频。推理前需按[模型说明](models/README.md)将三个权重放入
+`models/`，再指定自己的视频。目前尚未提供模型权重下载。
 
 ```bash
 python tools/verify_install.py --device auto
@@ -94,25 +82,17 @@ python infer.py --input /path/to/video.mp4 --device auto
 逐采样时刻、逐人物结果，`summary.json` 为参数、权重哈希及测量摘要。
 默认报警阈值为验证集锁定的 **0.7094**。
 
-V100 应使用包含 `sm_70` 的 CUDA 11.8 依赖：
-
-```bash
-python -m pip install -r setup/requirements-v100-cu118.txt
-python -m pip install -e ".[inference,demo,dev]" --no-deps
-python -m pip install -r Application/backend/requirements-live.txt
-```
-
-V100 代码兼容性已审计，未完成 V100 实机验收。[完整环境与部署说明 →](docs/deployment.md)
+V100 需要包含 `sm_70` 的 PyTorch 构建，安装命令见[部署说明](docs/deployment.md)。
 
 ## 在线演示
 
-演示提供视频画面、人物框、风险曲线、事件列表及实时遥测。
-两种模式在界面中明确区分：`live` 实际执行模型，`replay` 读取保存的预测结果。
-现有本地素材包含 18 段播放列表；素材取得和再分发范围见[数据集说明](docs/datasets.md)。
+Web App 使用 Vue 和 FastAPI，显示视频、人物框、分数曲线、报警事件和运行时延。
+`live` 模式执行模型推理，`replay` 模式读取保存的逐帧结果。
+默认播放列表包含 18 段视频，需另外准备对应素材，见[演示说明](docs/showcase.md)。
 
 ![EdgeFall Web App 实际界面](docs/assets/demo-dashboard.png)
 
-*真实本机界面的待启动状态截图，展示视频、风险曲线、人物状态与事件面板；此图不含模型预测结果或第三方视频画面。*
+*Web App 待启动界面，图中尚无预测结果。*
 
 ```bash
 cd Application/frontend
@@ -133,7 +113,7 @@ cd Application
 浏览器访问 `http://127.0.0.1:8000`。演示启动需要先按资产说明恢复播放列表视频。
 `live` 加载失败会报错；只有显式选择 `auto` 时才可能回退到带标识的回放。
 
-## 从训练到部署
+## 训练流程
 
 ```mermaid
 flowchart LR
@@ -146,10 +126,9 @@ flowchart LR
     G --> H[命令行 / Web 演示]
 ```
 
-训练配置包含三域数据、4,459 个困难负候选、327 个困难正视频与主人物人工修订。
-训练缓存仅用于加速训练，在线推理直接处理视频。
-`scripts/train_hn3br.py --dry-run` 可检查公开配置对应的命令；执行训练前需准备原始数据、
-特征缓存和审核 overlay。不能仅凭推理权重重建完整训练数据。
+训练使用三个数据域、4,459 个困难负候选、327 个困难正视频，以及人工修订的主人物标注。
+YOLO 与几何分支冻结，训练阶段读取预提取的视觉特征；在线推理直接处理视频。
+数据准备和训练命令见[训练指南](docs/training.md)。
 
 ```bash
 python scripts/train_hn3br.py --dry-run
@@ -166,16 +145,15 @@ python -m pytest -q
 | 指标定义、完整结果与证据 | [docs/benchmarks.md](docs/benchmarks.md) / [reports/](reports/) |
 | 环境、推理、App 与导出路线 | [docs/deployment.md](docs/deployment.md) |
 | Python 接入与评测接口 | [docs/api_zh.md](docs/api_zh.md) |
-| 3–5 分钟技术作品讲解 | [docs/showcase.md](docs/showcase.md) |
-| 研究与工程验证路线 | [docs/roadmap.md](docs/roadmap.md) |
+| Web App 与演示样本 | [docs/showcase.md](docs/showcase.md) |
+| 后续工作 | [docs/roadmap.md](docs/roadmap.md) |
 | 发布流程与资产管理 | [docs/release.md](docs/release.md) |
 | 第三方许可与来源 | [docs/third_party.md](docs/third_party.md) |
 
 ## 参与与联系
 
-欢迎复现、提交错误案例和贡献部署后端。问题与合作沟通可通过
-[GitHub Issues](https://github.com/Hongtauo/EdgeFall/issues) 发起。
+运行问题、错误案例和改进建议可提交到
+[GitHub Issues](https://github.com/Hongtauo/EdgeFall/issues)。
 贡献方式见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-项目的下一步是长时误报评估、跨设备性能回归和端侧导出验证。
-源码许可证尚待项目所有者确认，当前整理结果为发布候选；见[发布说明](docs/release.md)。
+源码许可证尚未确定，见[发布说明](docs/release.md)。
