@@ -30,7 +30,7 @@ python infer.py --input /path/to/video.mp4
 Third-party videos and model binaries are excluded from Git. See [model assets](models/README.md), [datasets](docs/datasets.md) and [deployment](docs/deployment.md).
 No public weight Release is currently configured. Training requires independently obtained datasets and regenerated feature caches, not just the inference weights.
 
-Source licensing is pending the owner's decision. Existing third-party licensing continues to apply.
+Source code is licensed under [GNU AGPL-3.0](LICENSE). Third-party dependencies, datasets, video frames and model weights retain their own terms; see [NOTICE](NOTICE) and [third-party attribution](docs/third_party.md).
 ONNX / TensorRT export, NPU performance and long-video false alarm rates have not yet been evaluated.
 
 See the [Chinese documentation](README.md) for model details, training instructions, evaluation results and the Web App.

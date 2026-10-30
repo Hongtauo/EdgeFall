@@ -7,6 +7,8 @@ name = "edgefall-st"
 version = "0.2.0"
 description = "Causal geometry-guided visual fall detection with shared YOLO features"
 readme = "README.md"
+license = "AGPL-3.0-only"
+license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.11"
 dependencies = [
   "numpy>=2.0,<3", "opencv-python>=4.10,<6", "PyYAML>=6.0,<7",

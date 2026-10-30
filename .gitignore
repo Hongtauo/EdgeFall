@@ -11,6 +11,7 @@ runs/
 log/
 results/
 dist/
+build/
 *.zip
 *.tar.gz
 *.mp4

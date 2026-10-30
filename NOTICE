@@ -1,0 +1,25 @@
+EdgeFall
+Copyright (C) 2026 Hongtauo
+
+EdgeFall source code is licensed under the GNU Affero General Public License,
+version 3 only (SPDX: AGPL-3.0-only). See LICENSE for the full terms.
+
+This software is provided without warranty, to the extent permitted by law.
+Source: https://github.com/Hongtauo/EdgeFall
+
+Third-party dependencies and materials retain their respective licenses and
+copyright notices. This notice does not relicense third-party datasets,
+video frames, model weights, or dependencies.
+
+The visual front end uses Ultralytics YOLO. Ultralytics provides its software
+under AGPL-3.0 or a separate Enterprise License; retain the applicable notices
+when distributing it. See https://www.ultralytics.com/license.
+
+The CAUCAFall frames shown in docs/assets/demo-fall-alert.png are from
+Dataset CAUCAFall v4 by Jose Camilo Eraso, Elena Muñoz, Mariela Muñoz and
+Jesus Pinto, licensed under CC BY 4.0. EdgeFall overlays detection boxes,
+scores and its application interface on that material.
+Source: https://doi.org/10.17632/7w7fccy7ky.4
+License: https://creativecommons.org/licenses/by/4.0/
+
+Further attribution and dataset terms: docs/third_party.md.

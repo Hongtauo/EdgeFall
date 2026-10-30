@@ -258,6 +258,11 @@ onBeforeUnmount(() => {
         <div>
           <p class="eyebrow">EDGEFALL-ST</p>
           <h1>实时跌倒检测</h1>
+          <nav class="legal-links" aria-label="源码与许可证">
+            <a href="https://github.com/Hongtauo/EdgeFall/tree/main" target="_blank" rel="noopener noreferrer">源码</a>
+            <span>·</span>
+            <a href="https://github.com/Hongtauo/EdgeFall/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">AGPL-3.0</a>
+          </nav>
         </div>
       </div>
       <div class="header-actions">
@@ -414,9 +419,9 @@ onBeforeUnmount(() => {
     </main>
 
     <footer>
-      <span>EdgeFall-ST 在线演示</span>
+      <span>© 2026 Hongtauo · EdgeFall-ST</span>
       <span>模型 {{ config.version }} · {{ (config.parameters / 1_000_000).toFixed(1) }}M 参数</span>
-      <span>演示输出仅用于模型能力展示，不替代人工处置</span>
+      <span>AGPL-3.0 · 本软件不提供担保</span>
     </footer>
 
     <div v-if="settingsOpen" class="drawer-backdrop" @click.self="settingsOpen = false">

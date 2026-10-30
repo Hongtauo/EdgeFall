@@ -10,6 +10,7 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-CUDA-EE4C2C)
 ![Model](https://img.shields.io/badge/Parameters-12.21M-0D9488)
 ![Sampling](https://img.shields.io/badge/Causal%20sampling-10%20FPS-2563EB)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
 
 ![EdgeFall overview](docs/assets/overview.svg)
 
@@ -156,4 +157,4 @@ python -m pytest -q
 [GitHub Issues](https://github.com/Hongtauo/EdgeFall/issues)。
 贡献方式见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-源码许可证尚未确定，见[发布说明](docs/release.md)。
+源码采用 [GNU AGPL-3.0](LICENSE)。第三方依赖、数据集、视频和模型权重保留各自的许可，见 [NOTICE](NOTICE) 和[第三方说明](docs/third_party.md)。

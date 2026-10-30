@@ -37,6 +37,8 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 .brand-mark span:nth-child(1) { height: 9px; }.brand-mark span:nth-child(2) { height: 18px; }.brand-mark span:nth-child(3) { height: 13px; }
 .eyebrow, .section-kicker { margin: 0 0 4px; color: var(--green); font-size: 11px; line-height: 1; font-weight: 800; letter-spacing: .14em; }
 .brand-block h1 { margin: 0; font-size: 21px; letter-spacing: -.02em; }
+.legal-links { display: flex; gap: 6px; margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.2; }
+.legal-links a { color: var(--green-dark); text-decoration: underline; text-underline-offset: 2px; }
 .header-actions { gap: 10px; }
 .connection { min-width: 205px; display: grid; grid-template-columns: 10px 1fr; column-gap: 8px; align-items: center; padding-right: 16px; margin-right: 2px; border-right: 1px solid var(--line); }
 .connection i { width: 8px; height: 8px; background: #9ba8a4; border-radius: 50%; grid-row: 1 / 3; }

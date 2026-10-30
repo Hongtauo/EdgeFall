@@ -58,7 +58,7 @@ def main() -> None:
     if len(labels) != 18:
         problems.append("Demo playlist should contain 18 labels")
     if args.public and not (ROOT / "LICENSE").is_file():
-        problems.append("Source license is pending; public publication requires an approved LICENSE")
+        problems.append("Public source release requires a root LICENSE file")
     if (ROOT / ".git").exists():
         tracked = subprocess.run(
             ["git", "-c", f"safe.directory={ROOT.as_posix()}", "ls-files", "-z"],

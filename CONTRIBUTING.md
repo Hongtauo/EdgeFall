@@ -1,6 +1,6 @@
 # 参与 EdgeFall
 
-欢迎提交可复现的问题报告、文档修正、算法评测和工程改进。开始修改前请先阅读 [README](README.md)、[方法设计](docs/method.md)与[评测报告](docs/benchmarks.md)。源码许可证尚待项目维护者确认，请先核对仓库的许可状态与[第三方说明](docs/third_party.md)。
+欢迎提交可复现的问题报告、文档修正、算法评测和工程改进。开始修改前请先阅读 [README](README.md)、[方法设计](docs/method.md)与[评测报告](docs/benchmarks.md)。源码采用 [AGPL-3.0](LICENSE)，第三方材料保留原许可，见[第三方说明](docs/third_party.md)。提交源码贡献时，请确认你有权按本项目许可证提供该贡献。
 
 ## 报告问题
 
