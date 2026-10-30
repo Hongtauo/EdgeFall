@@ -6,8 +6,8 @@
 ## 当前发布状态
 
 - 目标仓库：`https://github.com/Hongtauo/EdgeFall`。
-- 初始化检查时 GitHub connector 返回 404，尚未获得远端内容或分支信息。
-- 本地准备为发布候选，不自动推送、创建 Release 或把待确认资产上传。
+- GitHub connector 读取仍返回 404；本机 Git 凭据已能正常访问目标仓库。
+- 经项目所有者要求，已于 2026-10-30 将源码首次推送到 `main`；未创建模型 Release，也未上传权重、视频和本地环境。
 - 源码许可证尚待所有者决定；在确认并加入正式 LICENSE 之前，不把候选目录称为已授权开源发布。
 - 模型资产暂无公开下载 URL；文档不会提供假链接。
 
@@ -29,8 +29,8 @@ python scripts/package_release.py
 ## 推送前的具体事项
 
 1. 确认源码许可证，保留第三方声明，并核对训练数据与模型发布条件。
-2. 确认目标仓库存在且当前账号可访问。若仓库是私有的，给 GitHub connector 授权或在本机配置 Git 凭据。
-3. `python scripts/check_release.py --public` 必须通过；该模式要求 LICENSE 存在。
+2. 本机 Git 已配置目标仓库访问；若使用 GitHub connector 管理项目，还需给连接授权对应仓库。
+3. 后续正式开源授权发布前运行 `python scripts/check_release.py --public`；该模式要求 LICENSE 存在，目前源码许可证仍待所有者确定。
 4. 运行单元测试和前端构建；实际推理验收需要单独模型资产。
 5. 审阅 `git status --short`、`git diff --cached --stat`，确保没有视频、权重、秘密信息和个人路径。
 6. 确认内容后再创建提交并推送待审分支。首个公开版本建议为 `v0.2.0`，不复用旧参赛 ZIP 的版本语义。

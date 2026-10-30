@@ -27,5 +27,5 @@
     "ultralytics": "8.4.98",
     "amp_dtype": "bfloat16"
   },
-  "publication": {"license": "pending owner decision", "github_connector_initial_read": "404; repository existence or access unresolved", "pushed": false}
+  "publication": {"license": "pending owner decision", "github_connector_initial_read": "404; connector access unresolved", "git_transport": "authenticated local Git access confirmed", "pushed": true, "branch": "main", "first_source_commit": "6f9ca32", "push_date": "2026-10-30", "model_and_video_assets_uploaded": false}
 }
